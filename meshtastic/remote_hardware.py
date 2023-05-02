@@ -11,6 +11,7 @@ from meshtastic.util import our_exit
 def onGPIOreceive(packet, interface):
     """Callback for received GPIO responses"""
     logging.debug(f"packet:{packet} interface:{interface}")
+    #print(f"\npacket:{packet} interface:{interface}\n")
     gpioValue = 0
     hw = packet["decoded"]["remotehw"]
     if "gpioValue" in hw:
@@ -25,8 +26,9 @@ def onGPIOreceive(packet, interface):
     # print(f'mask:{interface.mask}')
     value = int(gpioValue) & int(interface.mask)
     print(
-        f'Received RemoteHardware type={hw["type"]}, gpio_value={gpioValue} value={value}'
+        f'Received RemoteHardware type={hw["type"]}, gpio_value={gpioValue} value={value}=0x{value:X}'
     )
+#        f'Received RemoteHardware type={hw["type"]}, gpio_value={gpioValue}=0x{gpioValue:X} value={value}=0x{value:X} interface.mask=0x{int(interface.mask):X}'
     interface.gotResponse = True
 
 
