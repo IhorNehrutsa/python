@@ -441,6 +441,7 @@ def onConnected(interface):
                         if interface.gotResponse:
                             break
                     logging.debug(f"end of gpio_rd")
+                    print(f"end of gpio_rd")
 
                 if args.gpio_watch:
                     bitmask = int(args.gpio_watch, 16)
@@ -1350,5 +1351,5 @@ def tunnelMain():
     common()
 
 
-if 1:#__name__ == "__main__":
+if __name__ == "__main__":
     main()
